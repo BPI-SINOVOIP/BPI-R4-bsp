@@ -1,0 +1,49 @@
+#
+# Copyright (c) 2022, MediaTek Inc. All rights reserved.
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+NAMESPACE := MT7981
+
+ifeq (${CONFIG_${NAMESPACE}_DRAM_DDR3},y)
+MAKE_ARGS += DRAM_USE_DDR4=0
+endif
+
+ifeq (${CONFIG_${NAMESPACE}_DRAM_DDR4},y)
+MAKE_ARGS += DRAM_USE_DDR4=1
+endif
+
+ifeq (${CONFIG_${NAMESPACE}_DDR3_FREQ_2133},y)
+MAKE_ARGS += DDR3_FREQ_2133=1
+endif
+
+ifeq (${CONFIG_${NAMESPACE}_DDR3_FREQ_1866},y)
+MAKE_ARGS += DDR3_FREQ_1866=1
+endif
+
+ifeq (${CONFIG_${NAMESPACE}_QFN},y)
+MAKE_ARGS += BOARD_QFN=1
+endif
+
+ifeq (${CONFIG_${NAMESPACE}_BGA},y)
+MAKE_ARGS += BOARD_BGA=1
+endif
+
+ifeq (${CONFIG_${NAMESPACE}_DRAM_SIZE_AUTO},y)
+endif
+
+ifeq (${CONFIG_${NAMESPACE}_DRAM_SIZE_256},y)
+MAKE_ARGS += DRAM_SIZE_LIMIT=256
+endif
+
+ifeq (${CONFIG_${NAMESPACE}_DRAM_SIZE_512},y)
+MAKE_ARGS += DRAM_SIZE_LIMIT=512
+endif
+
+ifeq (${CONFIG_${NAMESPACE}_DRAM_SIZE_1024},y)
+MAKE_ARGS += DRAM_SIZE_LIMIT=1024
+endif
+
+ifeq (${CONFIG_${NAMESPACE}_DRAM_SIZE_2048},y)
+MAKE_ARGS += DRAM_SIZE_LIMIT=2048
+endif

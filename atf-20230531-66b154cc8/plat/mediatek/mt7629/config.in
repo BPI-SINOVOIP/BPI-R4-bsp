@@ -1,0 +1,14 @@
+#
+# Copyright (c) 2022, MediaTek Inc. All rights reserved.
+#
+# SPDX-License-Identifier: BSD-3-Clause
+#
+
+menu "MT7629 DRAM"
+	depends on !FPGA
+	choice MT7629_DDR_TYPE
+		bool "DRAM type"
+		config MT7629_DRAM_DDR3
+			bool "DDR3"
+	endchoice
+endmenu

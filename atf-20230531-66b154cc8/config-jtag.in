@@ -1,0 +1,8 @@
+menu JTAG
+config ENABLE_JTAG
+	bool "ignore security policy and enable JTAG"
+	default n
+	help
+	  If JTAG is enabled it will trigger potential security attacks, so it is
+	  disabled by default. If you really need to use it, say 'y' here.
+endmenu

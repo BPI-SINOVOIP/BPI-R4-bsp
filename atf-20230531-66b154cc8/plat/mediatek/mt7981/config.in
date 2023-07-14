@@ -1,0 +1,51 @@
+#
+# Copyright (c) 2022, MediaTek Inc. All rights reserved.
+#
+# SPDX-License-Identifier: BSD-3-Clause
+#
+
+menu "MT7981 DRAM"
+	depends on !FPGA
+	choice MT7981_DDR_TYPE
+		bool "MT7981_DRAM type"
+		config MT7981_DRAM_DDR3
+			bool "DDR3"
+		config MT7981_DRAM_DDR4
+			bool "DDR4"
+	endchoice
+	choice MT7981_BOARD_TYPE
+		bool "BOARD type"
+		config MT7981_QFN
+			bool "QFN"
+			depends on MT7981_DRAM_DDR3
+		config MT7981_BGA
+			bool "BGA"
+	endchoice
+	choice MT7981_DDR_SIZE
+		bool "MT7981_DRAM size limitation"
+		default MT7981_DRAM_SIZE_AUTO
+		config MT7981_DRAM_SIZE_AUTO
+			bool "Auto detect"
+		config MT7981_DRAM_SIZE_256
+			bool "256MB"
+			depends on MT7981_DRAM_DDR3
+		config MT7981_DRAM_SIZE_512
+			bool "512MB"
+			depends on MT7981_DRAM_DDR3
+		config MT7981_DRAM_SIZE_1024
+			bool "1GB"
+			depends on MT7981_DRAM_DDR4
+		config MT7981_DRAM_SIZE_2048
+			bool "2GB"
+			depends on MT7981_DRAM_DDR4
+	endchoice
+	choice MT7981_DDR3_FREQUENCY
+		bool "DDR3 frequency"
+		default MT7981_DDR3_FREQ_2133
+		depends on MT7981_DRAM_DDR3
+		config MT7981_DDR3_FREQ_2133
+			bool "DDR3 2133MHz"
+		config MT7981_DDR3_FREQ_1866
+			bool "DDR3 1866MHz"
+	endchoice
+endmenu

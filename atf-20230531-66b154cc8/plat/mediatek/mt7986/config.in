@@ -1,0 +1,43 @@
+#
+# Copyright (c) 2022, MediaTek Inc. All rights reserved.
+#
+# SPDX-License-Identifier: BSD-3-Clause
+#
+
+menu "MT7986 DRAM"
+	depends on !FPGA
+	choice MT7986_DDR_TYPE
+		bool "DRAM type"
+		config MT7986_DRAM_DDR3
+			bool "DDR3"
+		config MT7986_DRAM_DDR4
+			bool "DDR4"
+	endchoice
+	choice MT7986_DDR_SIZE
+		bool "MT7986_DRAM size limitation"
+		default MT7986_DRAM_SIZE_AUTO
+		config MT7986_DRAM_SIZE_AUTO
+			bool "Auto detect"
+		config MT7986_DRAM_SIZE_256
+			bool "256MB"
+			depends on MT7986_DRAM_DDR3
+		config MT7986_DRAM_SIZE_512
+			bool "512MB"
+			depends on MT7986_DRAM_DDR3
+		config MT7986_DRAM_SIZE_1024
+			bool "1GB"
+			depends on MT7986_DRAM_DDR4
+		config MT7986_DRAM_SIZE_2048
+			bool "2GB"
+			depends on MT7986_DRAM_DDR4
+	endchoice
+	choice MT7986_DDR4_FREQUENCY
+		bool "DDR4 frequency"
+		default MT7986_DDR4_FREQ_3200
+		depends on MT7986_DRAM_DDR4
+		config MT7986_DDR4_FREQ_3200
+			bool "DDR4 3200MHz"
+		config MT7986_DDR4_FREQ_2666
+			bool "DDR4 2666MHz"
+	endchoice
+endmenu
